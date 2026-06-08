@@ -7,7 +7,10 @@ print( 'arguments', sys.argv )
 
 month = int(sys.argv[1])
 
-df = pd.DataFrame({"A": [1, 2], "B": [3, 4]})
+df = pd.DataFrame({"day": [1, 2], "number of passengers": [3, 4]})
+df['month'] = month
 print( df.head() )
 
-print( f'Pipeline is running with on, month={month}')
+df.to_parquet(f'output_month={month}.parquet')
+
+print( f'Pipeline is running on month = {month}')
